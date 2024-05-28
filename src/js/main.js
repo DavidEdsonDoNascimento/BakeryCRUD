@@ -1,8 +1,17 @@
 var cart = [];
-window.onload = () => {
+window.onload = async () => {
 	cart = [];
-	let produtos = getProducts();
+
+	let produtos = await getProducts();
 	createProductsTable(produtos);
+
+	document.querySelectorAll('.product-card').forEach(function (item) {
+		item.addEventListener('click', async (e) => {
+			let productId = e.target.attributes['data-id'].value;
+			console.log(`productId:`, productId);
+			await handleProductSelected(productId);
+		});
+	});
 };
 
 function createProductsTable(productsData) {
@@ -13,20 +22,20 @@ function createProductsTable(productsData) {
 	for (const product of productsData) {
 		let li = document.createElement('li');
 		li.setAttribute('class', 'product-card');
-		li.setAttribute('onclick', `getProductSelected(${product.id})`);
+		li.setAttribute('data-id', product.id);
 		li.innerHTML = createProductDetailsHtml(product);
 		ul.appendChild(li);
 	}
 }
 
 /** Quando selecionar deve ir para o carrinho */
-function getProductSelected(id) {
-	let products = getProducts();
-	let p = products.find((product) => product.id === id);
-	addCart(p);
+async function handleProductSelected(id) {
+	let products = await getProducts();
+	let p = products.find((product) => product.id === +id);
+	await addCart(p);
 }
 
-function getCart() {
+async function getCart() {
 	return cart;
 }
 
@@ -34,29 +43,38 @@ function setCart(cartData) {
 	cart = cartData;
 }
 
-function addCart(product) {
-	let currentCart = getCart();
+async function addCart(product) {
+	let currentCart = [...(await getCart())];
 	let itemP = currentCart.find((c) => c.id === product.id);
-
-	if (!itemP?.id) {
-		currentCart.push({ ...product, qttAtPurchase: 1 });
-        setCart(currentCart);
-        buildCart();
-        return;
+	let itemIndex = currentCart.findIndex((c) => c.id === product.id);
+	if (itemIndex >= 0) {
+		currentCart.splice(itemIndex, 1);
 	}
+	currentCart.push({
+		...product,
+		qttAtPurchase: (!itemP?.qttAtPurchase ? 0 : itemP.qttAtPurchase) + 1,
+	});
+	setCart(currentCart);
+	await buildCart();
 }
 
-function buildCart() {
-    let ul = document.getElementById('cart');
-    let cart = getCart();
-    for (const item of cart) {
-        let li = document.createElement('li');
-        li.innerHTML = createProductInCartHtml(item);
+/** Constroi o carrinho */
+async function buildCart() {
+	let ul = document.getElementById('cart');
+	// removendo todos os li para recriar os itens do carrinho
+	ul.innerHTML = '';
+	console.log(ul);
+	let cart = await getCart();
+	console.log(`getCart:`, cart);
+	for (const item of cart) {
+		let li = document.createElement('li');
+		li.innerHTML = createProductInCartHtml(item);
 		ul.appendChild(li);
-    }
+	}
+	console.log(`getCart:`, ul);
 }
 function createProductInCartHtml(item) {
-    return `Produto: ${item.name} | Quantidade: ${item.qttAtPurchase}`;
+	return `Produto: ${item.name} | Quantidade: ${item.qttAtPurchase}`;
 }
 
 function createProductDetailsHtml(product) {
@@ -73,7 +91,7 @@ function getPriceFormated(price) {
 }
 
 /** Retorna um array de produtos mockados */
-function getProducts() {
+async function getProducts() {
 	return [
 		{
 			id: 1,
