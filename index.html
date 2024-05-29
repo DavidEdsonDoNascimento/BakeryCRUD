@@ -16,15 +16,17 @@
 		<link rel="stylesheet" href="./src/css/cart.css" />
 	</head>
 	<body>
-		<nav>
-			<a href="#" class="logo">Mercearia</a>
-			<ul class="nav-list">
-				<li class="nav-item"><a href="#">Ofertas</a></li>
-				<li class="nav-item"><a href="#">Comidas</a></li>
-				<li class="nav-item"><a href="#">Bebidas</a></li>
-				<li class="nav-item"><a href="#">Perfil</a></li>
-			</ul>
-		</nav>
+		<div class="header">
+			<nav>
+				<a href="#" class="logo">Mercearia</a>
+				<ul class="nav-list">
+					<li class="nav-item"><a href="#">Ofertas</a></li>
+					<li class="nav-item"><a href="#">Comidas</a></li>
+					<li class="nav-item"><a href="#">Bebidas</a></li>
+					<li class="nav-item"><a href="#">Perfil</a></li>
+				</ul>
+			</nav>
+		</div>
 		<div class="container">
 			<ul id="products"></ul>
 		</div>
@@ -32,9 +34,9 @@
 			<h2>Carrinho</h2>
 			<div class="cart-ul-container">
 				<ul id="cart"></ul>
-                <button class="btn-purchase">Efetuar pagamento</button>
+				<button class="btn-purchase">Efetuar pagamento</button>
 			</div>
 		</div>
-		<script src="./src/js/main.js" type="module"></script>
+		<script defer src="./src/js/main.js" type="module"></script>
 	</body>
 </html>

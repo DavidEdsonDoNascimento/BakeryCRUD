@@ -1,6 +1,4 @@
 body {
-    margin: 0;
-    padding: 0;
     background-color: var(--white);
     font-family: var(--font);
     font-weight: var(--font-weight);
@@ -17,7 +15,8 @@ a {
 }
 
 nav {
-    height: 80px;
+    max-width: 1280px;
+    height: 70px;
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -31,6 +30,7 @@ nav ul {
     display: flex;
     width: 600px;
     justify-content: space-around;
+    gap: 2rem;
 }
 
 .nav-item a { 
@@ -44,4 +44,5 @@ nav ul {
     width: auto;
     height: auto;
     justify-content: center;
+    padding: 15px;
 }
