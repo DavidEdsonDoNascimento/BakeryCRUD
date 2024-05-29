@@ -1,0 +1,23 @@
+* {
+    box-sizing: border-box;
+}
+
+:root {
+    --white: #fff;
+    --gray-700: #a0a0a0;
+
+    --green-900: #A8C686;
+
+    --brown-800: #b9823f;
+    --brown-900: #b9823f97;
+    --brown-400: #502314;
+
+    --orange-400: #E4572E;
+    --orange-900: #F3A712;
+
+    --blue-200: #29335C;
+    --blue-800: #669BBC;
+
+    --font:"Macondo", cursive;
+    --font-weight: 400;
+}

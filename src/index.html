@@ -1,27 +1,40 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mercearia</title>
-    <link rel="stylesheet" href="./css/main.css">
-</head>
-<body>
-    <nav>
-        <a href="#" class="logo">Mercearia</a>
-        <ul class="nav-list">
-            <li class="nav-item"><a href="#">Ofertas</a></li>
-            <li class="nav-item"><a href="#">Comidas</a></li>
-            <li class="nav-item"><a href="#">Bebidas</a></li>
-            <li class="nav-item"><a href="#">Perfil</a></li>
-        </ul>
-    </nav>
-    <div class="container">
-        <ul id="products"></ul>
-    </div>
-    <div class="cart-container">
-        <ul id="cart"></ul>
-    </div>
-    <script src="./js/main.js" type="module"></script>
-</body>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Mercearia</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Macondo&display=swap"
+			rel="stylesheet"
+		/>
+		<link rel="stylesheet" href="./css/root.css" />
+		<link rel="stylesheet" href="./css/main.css" />
+		<link rel="stylesheet" href="./css/product.css" />
+		<link rel="stylesheet" href="./css/cart.css" />
+	</head>
+	<body>
+		<nav>
+			<a href="#" class="logo">Mercearia</a>
+			<ul class="nav-list">
+				<li class="nav-item"><a href="#">Ofertas</a></li>
+				<li class="nav-item"><a href="#">Comidas</a></li>
+				<li class="nav-item"><a href="#">Bebidas</a></li>
+				<li class="nav-item"><a href="#">Perfil</a></li>
+			</ul>
+		</nav>
+		<div class="container">
+			<ul id="products"></ul>
+		</div>
+		<div class="cart-container">
+			<h2>Carrinho</h2>
+			<div class="cart-ul-container">
+				<ul id="cart"></ul>
+                <button class="btn-purchase">Efetuar pagamento</button>
+			</div>
+		</div>
+		<script src="./js/main.js" type="module"></script>
+	</body>
 </html>
