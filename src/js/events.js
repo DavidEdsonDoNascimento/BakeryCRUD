@@ -4,12 +4,17 @@ export async function addEventListeners(cart) {
 	document.querySelectorAll('.product-card').forEach(function (item) {
 		item.addEventListener('click', async (e) => {
 			console.log(e);
-            console.log('voi:', cart);
+			console.log('voi:', cart);
 			let productId = e.target.attributes['data-id'].value;
 			console.log(`productId:`, productId);
 			await handleProductSelected(productId, cart);
 		});
 	});
+
+	const hamburger = document.querySelector('.hamburger');
+	const nav = document.querySelector('.nav');
+
+	hamburger.addEventListener('click', () => nav.classList.toggle('active'));
 
 	document
 		.querySelector('.btn-purchase')

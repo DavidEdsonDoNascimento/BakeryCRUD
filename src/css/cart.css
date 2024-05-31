@@ -17,6 +17,7 @@
 #cart {
     list-style: none;
     font-size: 1.2rem;
+    line-height: 1.5;
 }
 
 .btn-purchase {
