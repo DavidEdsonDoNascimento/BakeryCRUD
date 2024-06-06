@@ -52,12 +52,11 @@ async function buildCart() {
 		ul.appendChild(li);
 	}
 
-	ul.appendChild(await createTotalPurchase());
 	console.log(`buildCart:`, ul);
+	await createTotalPurchase();
 }
 async function createTotalPurchase() {
-	let totalPurchase = document.createElement('span');
-    totalPurchase.setAttribute('class', 'totalPurchase');
+	let totalPurchase = document.getElementById('total-purchase');
 	totalPurchase.innerHTML = `TOTAL: R$${getPriceFormated(
 		await getTotalPrice()
 	)}`;
